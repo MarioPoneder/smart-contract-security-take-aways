@@ -43,5 +43,5 @@ and [Ethernaut](https://ethernaut.openzeppelin.com/) <[solutions](https://github
 22. Token distributions (rewards) based on user-triggered snapshots can be manipulated using flash loans to get more tokens (rewards).
     The same is true for governance actions.
 23. When your contract relies on oracles to access off-chain data (e.g. token prices), make to sure to use multiple oracles which cannot be manipulated by a single (centralized) entity.
-24. Altough a transaction is always reverted when a `require` statements fails, make sure to perform the necessary checks before executing a governance action or transferring funds.
+24. Although a transaction is always reverted when a `require` statements fails, make sure to perform the necessary checks before executing a governance action or transferring funds.
     Otherwise, a malicious executed action or fallback function (when transferring funds) could make a subsequent `require` statement succeed which would have failed when checked in advance. 
