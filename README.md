@@ -11,7 +11,7 @@ and [Ethernaut](https://ethernaut.openzeppelin.com/) <[solutions](https://github
 4.  Use the `SafeMath` library for arithmetic operations in contracts with Solidity versions < 0.8.0 to avoid "silent" integer over-/underflows.
 5.  Do not allow `delegatecall`s in a contract with a target function or even target contract address which can be freely specified by the caller.
     This allows the caller do anything in the context (`msg` context and storage) of your contract.
-    Even user-specified `call`s a dangerous because a token's `approve` function could be called on behalf of your contract.
+    For example, a token's `approve` function could be called on behalf of your contract.
 6.  Keep in mind that even a contract without a payable fallback function can be forcefully funded with some ETH using the `selfdestruct` function.
 7.  Never store secret data (e.g. a password) in a contract since its whole storage can be read by anyone, even private variables.
 8.  Always check return values (especially the success of `call` and `delegatecall`) and decide if the calling contract should revert on failure.
@@ -31,7 +31,7 @@ and [Ethernaut](https://ethernaut.openzeppelin.com/) <[solutions](https://github
 15. Below solidity version 0.5.0, it was possible to compile contracts with uninitialized local storage variables which can point to unexpected storage locations.
 16. A low-liquidity trading pair on a DEX, which computes the swap price based on the liquidity pool balances, can be easily manipulated with a flash loan to get cheap tokens.
 17. Keep in mind that `msg.value` is also preserved through `delegatecall`s and calls to non-`external` functions of the same contract.
-    This way, the value might be counted multiple times in a poorly designed contract although the sender payed just once.
+    This way, the value might be counted multiple times in a poorly designed contract although the sender paid just once.
 18. Make sure that initializable implementation contracts which are designed to be called through a proxy contract are also initialized in their own context.
     Otherwise (depending on the implementation) anyone can initialize and therefore take ownership of the contract.
 19. Be careful with `require` and `assert` statements because they might unexpectedly break your contract and therefore lock the deposited funds forever.
